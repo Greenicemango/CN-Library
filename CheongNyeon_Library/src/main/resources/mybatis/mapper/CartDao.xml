@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.groupc.cnl.dao.ICartDao">
+	<!-- -->
+	<select id="getCartList" parameterType="String" resultType="com.groupc.cnl.dto.CartVO">
+		SELECT * FROM cart_view WHERE useyn='y' AND id=#{param1} AND result='1' ORDER BY cseq DESC
+	</select>
+	
+	<insert id="insertCart" parameterType="com.groupc.cnl.dto.CartVO">
+		INSERT INTO cart(cseq, id, bseq, quantity)
+			VALUES(cart_seq.nextVal, #{id}, #{bseq}, #{quantity})
+	</insert>
+	
+	<delete id="deleteCart" parameterType="INTEGER">
+		DELETE FROM cart WHERE cseq=#{param1}
+	</delete>
+	
+	<select id="getCartCount" parameterType="String" resultType="com.groupc.cnl.dto.CartVO">
+		SELECT * FROM cart WHERE id=#{param1}
+	</select>
+	
+	<delete id="deleteCartById" parameterType="String">
+		DELETE FROM cart WHERE id=#{param1}
+	</delete>
+	
+	<update id="changeCartResult" parameterType="INTEGER">
+		UPDATE cart SET result='2' WHERE cseq = #{param1}
+	</update>
+	
+	<update id="restoreResult" parameterType="STRING">
+		UPDATE cart SET result='1' WHERE id=#{param1}
+	</update>
+</mapper>

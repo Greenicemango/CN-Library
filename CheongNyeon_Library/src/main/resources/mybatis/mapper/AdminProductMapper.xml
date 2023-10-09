@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.groupc.cnl.adminDao.IAdminProductDao">
+
+	<resultMap  id="adminProductMap" type="java.util.HashMap"></resultMap>
+	
+	<select id="getProductCount" parameterType="String" resultType="INTEGER">
+		SELECT COUNT(*) FROM bookproduct WHERE bname LIKE '%'||#{param1}||'%'
+	</select>
+	
+	<select id="getProductAllList" resultType="com.groupc.cnl.dto.ProductVO">
+		SELECT * FROM (
+			SELECT * FROM (
+				SELECT rownum AS rn, b.* FROM (
+					(SELECT * FROM bookproduct WHERE useyn='y' AND bname LIKE '%'||#{param1}||'%' ORDER BY bseq DESC) b)
+			) WHERE rn &gt;= #{param2}
+		) WHERE rn &lt;= #{param3}
+	</select>
+	
+	<select id="getBestProductCount" parameterType="String" resultType="INTEGER">
+		SELECT COUNT(*) FROM bookproduct WHERE bname LIKE '%'||#{param1}||'%' AND bestyn='y'
+	</select>
+	
+	<select id="getBestProductAllList" resultType="com.groupc.cnl.dto.ProductVO">
+		SELECT * FROM (
+			SELECT * FROM (
+				SELECT rownum AS rn, b.* FROM (
+					(SELECT * FROM bookproduct 
+						WHERE bname LIKE '%'||#{param1}||'%' AND bestyn='y' ORDER BY bseq DESC) b)
+			) WHERE rn &gt;= #{param2}
+		) WHERE rn &lt;= #{param3}
+	</select>
+	
+	<insert id="uploadProduct" parameterType="com.groupc.cnl.dto.ProductVO">
+		INSERT INTO bookproduct(bseq, bname, writer, byear, kind, price, 
+			publisher, genre, content, list, image, longimage, useyn, bestyn)
+				VALUES(bookproduct_seq.nextVal, #{bname}, #{writer}, #{byear}, #{kind}, #{price}, 
+					#{publisher}, #{genre}, #{content}, #{list}, #{image}, #{longimage}, #{useyn}, #{bestyn})
+	</insert>
+	
+	
+	<insert id="updateProduct" statementType="CALLABLE" parameterType="java.util.HashMap" >
+		{CALL updateProduct( 
+		#{BSEQ}, #{BNAME}, #{WRITER},#{PUBLISHER}, #{BYEAR}, #{PRICE}, #{CONTENT}, #{KIND,  jdbcType=CHAR}, 
+		#{GENRE, jdbcType=VARCHAR}, #{IMAGE}, #{USEYN}, #{BESTYN}, #{LONGIMAGE, jdbcType=VARCHAR} 
+		) }
+	</insert>
+	
+
+	
+	<update id="deleteProduct" statementType="CALLABLE" parameterType="INTEGER" >
+		{CALL deleteProduct(#{bseq})}
+	</update>
+
+
+	<select id="getProductDetail" parameterType="INTEGER" resultType="com.groupc.cnl.dto.ProductVO">
+		SELECT * FROM bookproduct WHERE bseq=#{param1}
+	</select>
+	
+</mapper>

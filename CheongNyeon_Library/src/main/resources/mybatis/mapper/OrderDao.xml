@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.groupc.cnl.dao.IOrderDao">
+<!--  -->
+	<select id="selectOseqOrderAll" parameterType="String" resultType="INTEGER">
+		SELECT DISTINCT oseq FROM m_order_view WHERE id=#{param1} AND result='1'
+			ORDER BY oseq DESC
+	</select>
+	
+	<select id="listOrderByOseq" parameterType="INTEGER" resultType="com.groupc.cnl.dto.OrderVO">
+		SELECT * FROM m_order_view WHERE oseq=#{param1} ORDER BY oseq DESC
+	</select>
+	
+	<select id="listOrderByOseqTracking" parameterType="INTEGER" resultType="com.groupc.cnl.dto.OrderVO">
+		SELECT * FROM m_order_view WHERE oseq=#{param1} AND result!='1' ORDER BY oseq DESC
+	</select>
+	
+	<insert id="insertOrder" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL insertOrder(#{id}, #{bank},
+			#{oseq, mode=OUT, jdbcType=INTEGER})}
+	</insert>
+	
+<!-- 	parameterType="String" -->
+	<insert id="insertOrders">
+		INSERT INTO m_orders(oseq, id, bank) 
+			VALUES(m_orders_seq.nextVal , #{param1}, #{param2})
+	</insert>
+	
+	<select id="getMaxOseq" parameterType="String" resultType="INTEGER">
+		SELECT MAX(oseq) FROM m_orders WHERE id=#{param1}
+	</select>
+	
+	<insert id="insertOrderOne" parameterType="com.groupc.cnl.dto.OrderVO">
+		INSERT INTO m_order_detail(odseq, oseq, bseq, quantity)
+			VALUES(m_order_detail_seq.nextVal, #{oseq}, #{bseq}, #{quantity})
+	</insert>
+	
+	<select id="listOrderResult" resultType="com.groupc.cnl.dto.OrderVO">
+		SELECT * FROM m_order_view WHERE oseq=#{param1} ORDER BY oseq DESC
+	</select>
+	
+	<update id="cancelOrder" parameterType="INTEGER">
+		UPDATE m_order_detail SET result='5' WHERE oseq=#{param1}
+	</update>
+	
+	<select id="cancelListOseq" parameterType="String" resultType="INTEGER">
+		SELECT DISTINCT oseq, result FROM m_order_view WHERE id=#{param1} AND result='5'
+	</select>
+	
+	<update id="cancelNOrder" parameterType="String">
+		UPDATE nm_order_detail SET result='5' WHERE od_pass=#{param1}
+	</update>
+	
+	<select id="trackingOseq" parameterType="String" resultType="INTEGER">
+		SELECT DISTINCT oseq, result FROM m_order_view 
+			WHERE id=#{param1} AND NOT result in ('1') AND NOT result in ('5') ORDER BY result, oseq DESC
+	</select>
+	
+	<delete id="deleteOrders" parameterType="INTEGER">
+		DELETE FROM m_orders WHERE oseq=#{param1}
+	</delete>
+	
+	<delete id="deleteOrder_detail" parameterType="INTEGER">
+		DELETE FROM m_order_detail WHERE oseq=#{param1}
+	</delete>
+
+	<insert id="insertPayOut">
+		INSERT INTO paysystem(payseq, id, payoutmoney)
+			VALUES(paysystem_seq.nextVal, #{param1}, #{param2})
+	</insert>
+	
+	<select id="selectProduct" resultType="com.groupc.cnl.dto.CartVO">
+		SELECT * FROM cart_view WHERE result='2'
+	</select>
+</mapper>

@@ -1,0 +1,173 @@
+@charset "UTF-8";
+
+/* admin_index */
+.clear{clear:both;}
+
+body{background-color: white; margin:0px; padding:0px;}
+
+#wrap{width:700px; height:300px; margin:0 auto; text-align:center;}
+#wrap article div form{margin-top:200px;}
+#wrap article div form img{position:relative; float:left; }
+.box{position:relative; float:left; height:117px;background-color:#4466c9;}
+.boxLeft{position:relative; float:left; width:200px; height:42px; line-height:42px; margin:6px 0 0 0;}
+.boxLeft label{color:white; font-weight:bold;}
+.boxLeft input{outline:none;}
+.msg{position:relative; float:left; width:200px; heigth:16px; line-height:16px; color:yellow; font-weight:bold;}
+.boxRight{position:relative; float:left; width:100px; height:117px;}
+.btn{position:relative; float:left;width:90px; height:90px; line-height:90px; font-size:120%; 
+font-weight:bold; margin:13px 0 0 5px; color:white; border:1px solid white;background-color:#4466c9;}
+
+/* amdinHeader */
+header h2{width:200px;margin:0px; padding:10px; padding-left:40px;}
+header ul{position: absolute; width:900px; height:60px; left:200px; margin:0 auto;}
+header ul li{ display:block; height:60px; float:left;font-size:120%; line-height:60px; margin-right:20px;font-weight: bold; }
+header ul li:last-child{margin-left:200px;}
+header a { text-decoration: none; display: inline-block; font-size:120%;width: 100px; text-align: center; color:green; font-weight: bold; }
+header a:hover {text-decoration:underline;}
+
+/* adminMain */
+#adminBox {position:absolute; top: 120px; left:200px; width:900px; height:840px;border:1px solid gray; 
+	    border-radius: 15px; margin-left:20px;}
+#adminBox h2{padding-left:30px;}
+#adminBox label a{position:absolute; right:10px; color:green; text-decoration:none;}
+#adminBox a:hover{text-decoration:underline;}
+
+.mainNotice {position:relative; float:left; width:600px; height:200px;padding-left:30px;margin:10px;}
+.mainNotice label{position:relative; float:left; width:600px; height:40px; font-weight:bold; line-height:40px;
+font-size:120%; border-bottom:1px solid black;}
+.mainNotice span{position:relative; float:left; width:500px; height:30px; line-height:30px; font-size:90%;
+overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+
+.mainTotal{position:relative; float:left; width:300px; height:130px; padding-left:10px; border:1px solid black;
+margin:10px 20px 10px 10px;}
+.mainTotal label{position:relative; float:left; width:280px; height:40px; font-weight:bold; line-height:40px;
+font-size:120%; padding:10px;}
+.mainTotal span{position:relative; float:left; width:200px; height:40px; line-height:40px; font-size:300%;
+margin:0 auto; padding: 0px 10px 0px 60px; text-align:center;}
+
+/* admin side bar in adminFooter.jsp */
+#adminSideBar{position:absolute; top:120px; width:200px;height:800px; margin:0 0 0 10px; padding:0px;
+    text-align: left;}
+#adminSideBar ul{list-style:none; padding:0px; margin:0px; display:inline-block;}
+
+.sideList{position:relative; height:50px; padding-bottom:10px; margin-bottom:10px;
+border:1px solid gray;border-radius: 15px;}
+.sideTitle{position:relative; width:200px; height:40px;}
+.listbutton{position:relative; float:right; margin:14px 10px 0 0;width:27px; height:27px; border-radius:50%; overflow:hidden;
+opacity:0.6;background-position:-270px 0px; background-image:url(../images/admin_img/ico_btn.png);}
+.sideList span{position:relative; top:10px;width:200px; height:40px;font-size:120%; font-weight:bold;margin:5px;
+line-height:40px;}
+.sideTitle:hover{text-decoration:underline; font-size:105%;}
+.sideList ul{ width:200px; height:1px;margin:2px;visibility:hidden;}
+.sideList ul li{width:200px; height:30px;padding-left:10px; margin-top:10px;}
+.sideList ul li a{text-decoration:none; color:black;}
+.sideList ul li a:hover{text-decoration:underline; font-weight:bold;font-size:105%;}
+
+#productList tr{border-bottom:1px solid gray;}
+
+/* admin productList */
+#admin_ProductDetail>li{margin:10px 0px 10px 20px;}
+
+/* qna */
+#searchbox1{float:right; margin-right:200px; font-size:16px; width:500px; height:36px; line-height:36px;border:0px; outline:none; font-size: 120%; color:green;
+}
+
+table#qqna{float:right; margin-right:170px;}
+
+
+table#qqnaList {float:right; border-collapse: collapse; border-top: 2px solid #333; border-bottom: 1px solid #333;
+width: 70%; margin-left: 50px;margin-bottom: 20px; margin-right:170px;}
+#qqnaList th{border-bottom: 1px solid #9CF2B8; text-align: center; background-color:#ABF29C;}
+
+table#qqnaList1 {position:relative; border-collapse: collapse; border-top: 2px solid #333; border-bottom: 1px solid #333;
+width:700px; margin:0 auto;}
+#qqnaList1 th{color:white; border:1px solid white; background-color:#4466c9; text-align: center; height:50px;}
+#qqnaList1 td{padding:20px; border-bottom:1px solid black;}
+
+
+#admin_ProductUploadForm label{
+	width:100px;
+	text-align:center;
+	display:inline-block; 
+	justify-content:space-between;
+	margin: 4px;
+}
+
+#admin_ProductUploadForm>input{
+   	border-radius: 4px;
+}
+
+.radio_container {
+    position: relative;
+    top: 12px;
+    max-width: 250px;
+   	display: inline-block;
+   	border-radius: 4px;
+}
+
+.radio-container>label {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    display: inline-block;
+    height: 26px; 
+    line-height: 26px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    transition: .2s all ease-in-out;
+    width: 80px;
+}
+
+.radio_container input[type="radio"] {
+    display: none;
+    position: relative;
+    bottom: 10px;
+    font-weight:bold;
+}
+.radio_container input[type="radio"]:checked + label {
+    background: #4466c9;
+    border: 2px solid #b5b5b5;
+    color: white;
+}
+
+.uploadbtn{width:140px; height:32px; background-color:transparent;	}
+
+
+.updatebtn{
+    text-align: center;
+    font-size: 70%;
+    height:28px;
+    font-weight: bold;
+    margin-left: 10px;
+    color: white;
+    border: 1px solid white;
+    background-color: #4466c9;}
+
+.changebtn{
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    font-size: 70%;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+    border: 1px solid white;
+    background-color: #4466c9;}
+
+.btn1{position:relative; width:70px; height:30px; line-height:30px; font-size:70%; 
+font-weight:bold; margin-right:10px; margin-bottom:10px; color:white; border:1px solid white;background-color:#4466c9;}
+
+.btn2{ float:right; text-align:center; width:70px; height:40px; line-height:40px; font-size:70%; 
+font-weight:bold; margin-top: 20px; margin-left:300px; margin-right:700px; margin-bottom:10px; color:white; border:1px solid white;background-color:#4466c9;}
+
+/* notice */
+#write form {margin: 20px 0 0 0; width: 670px; float:right; margin-right:100px;}
+#write form fieldset {float:right; padding: 10px 0 20px 5px;	border: none; margin-right:250px;}
+#write form fieldset legend {margin-right:100px;	font-size: 20px; border-bottom: 1px dotted #666; width: 600px;  padding: 5px 0; }
+
+#write form label { width: 140px;   margin: 5px 0; margin-right:100px;}
+#write form input {margin: 5px 0;  border: 1px solid #999;} 
+
+/* admin product upload */	
+.uploadbtn{width:140px; height:32px; background-color:transparent;	}

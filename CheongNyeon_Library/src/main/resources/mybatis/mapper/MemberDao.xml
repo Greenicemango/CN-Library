@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.groupc.cnl.dao.IMemberDao">
+
+<resultMap  id="memberMap" type="java.util.HashMap"></resultMap>
+
+	<select id="getMember" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{  CALL getMember_c( 
+			#{id},
+			#{ref_cursor , mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap}
+		)  }
+	</select>
+	
+	<select id="checkMember" parameterType="STRING" resultType="com.groupc.cnl.dto.MemberVO">
+		select * from member where id = #{param1}
+	</select>
+	
+	<insert id="insertMember" statementType="CALLABLE" parameterType="java.util.HashMap" >
+		{ CALL insertMember_c( 
+		#{id}, #{pwd}, #{name}, #{email}, #{phone}, #{zip_num} , #{address}, #{gender}
+		) }
+	</insert>
+	
+	
+		<select id="selectAddressByDong" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{ CALL selectAddressByDong_c( 
+			#{dong},
+			#{ref_cursor , mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap}
+		)  }
+	</select>
+	
+	
+	<insert id="updateMember" statementType="CALLABLE" parameterType="java.util.HashMap" >
+		{CALL updateMember_c( 
+		#{ID}, #{PWD}, #{NAME}, #{EMAIL}, #{PHONE}, #{ZIP_NUM} , #{ADDRESS}, #{GENDER} 
+		) }
+	</insert>
+
+
+	<select id="checkMemberId1" statementType="CALLABLE" parameterType="java.util.HashMap" >
+		{CALL checkMemberId1(
+			#{name1}, #{phone},
+			#{ref_cursor , mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap}
+		)}
+	</select> 
+	
+	<select id="checkMemberId2" statementType="CALLABLE" parameterType="java.util.HashMap" >
+		{CALL checkMemberId2(
+			#{name2}, #{email},
+			#{ref_cursor , mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap}
+		)}
+	</select> 
+<!-- 	<select id="checkMemberId" statementType="CALLABLE" parameterType="java.util.HashMap" >
+		{CALL checkMemberId(
+			#{name1}, #{name2}, #{phone}, #{email}
+		)}
+	</select> -->
+	
+	<select id="checkMemberPwd" statementType="CALLABLE" parameterType="java.util.HashMap" >
+		{CALL checkMemberPwd(
+			#{id1}, #{id2}, #{phone}, #{email},
+			#{ref_cursor , mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=memberMap}
+		)}
+	</select>
+	
+	<!-- 
+	<delete id="withdrawal" parameterType="String">
+		DELETE FROM member WHERE id=#{param1}
+	</delete>
+	 -->
+	 
+	<update id="withdrawal" parameterType="String">
+		update member set useyn='n' where id=#{param1}
+	</update>
+	
+	<select id="getMemberByID" parameterType="String" resultType="com.groupc.cnl.dto.MemberVO">
+		SELECT * FROM member WHERE id=#{param1}
+	</select>
+
+	<update id="updatePayMoneyOut">
+		update member set paymoney=#{param1} where id=#{param2}
+	</update>
+	
+	<select id="getPayMoney" parameterType="String" resultType="INTEGER">
+		select paymoney from member where id=#{param1}
+	</select> 
+	
+</mapper>

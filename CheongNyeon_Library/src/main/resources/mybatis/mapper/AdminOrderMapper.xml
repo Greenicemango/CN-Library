@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.groupc.cnl.adminDao.IAdminOrderDao">
+
+<resultMap  id="adminOrderMap" type="java.util.HashMap"></resultMap>
+	
+	<select id="getMemberOrderCountKindOne" parameterType="String" resultType="INTEGER"> 
+		SELECT COUNT(*) FROM m_order_view WHERE (result=1 OR result=2 OR result=3) AND id LIKE '%'||#{param1}||'%'
+	</select>
+	<select id="getMemberOrderCountKindTwo" parameterType="String" resultType="INTEGER"> 
+		SELECT COUNT(*) FROM m_order_view WHERE (result=4 OR result=5) AND id LIKE '%'||#{param1}||'%'
+	</select>
+	<select id="getMemberOrderCountKindThree" parameterType="String" resultType="INTEGER"> 
+		SELECT COUNT(*) FROM non_order_view WHERE (result=1 OR result=2 OR result=3) AND nmname LIKE '%'||#{param1}||'%'
+	</select>
+	<select id="getMemberOrderCountKindFour" parameterType="String" resultType="INTEGER"> 
+		SELECT COUNT(*) FROM non_order_view WHERE (result=4 OR result=5) AND nmname LIKE '%'||#{param1}||'%'
+	</select>
+	
+	<select id="getMemberOrderListKindOne" resultType="com.groupc.cnl.dto.OrderVO">
+		SELECT * FROM (
+			SELECT * FROM (
+				SELECT ROWNUM as rn, q.* FROM (
+					(SELECT * FROM m_order_view 
+						WHERE (result=1 OR result=2 OR result=3) AND id LIKE '%'||#{param1}||'%' ORDER BY odseq DESC) q)
+			) WHERE rn &gt;= #{param2}
+		) WHERE rn &lt;= #{param3}
+	</select>
+	
+	<select id="getMemberOrderListKindTwo" resultType="com.groupc.cnl.dto.OrderVO">
+		SELECT * FROM (
+			SELECT * FROM (
+				SELECT ROWNUM as rn, q.* FROM (
+					(SELECT * FROM m_order_view 
+						WHERE (result=4 OR result=5) AND id LIKE '%'||#{param1}||'%' ORDER BY odseq DESC) q)
+			) WHERE rn &gt;= #{param2}
+		) WHERE rn &lt;= #{param3}
+	</select>
+	
+	<select id="getMemberOrderListKindThree" resultType="com.groupc.cnl.dto.NOrderVO">
+		SELECT * FROM (
+			SELECT * FROM (
+				SELECT ROWNUM as rn, q.* FROM (
+					(SELECT * FROM non_order_view 
+						WHERE (result=1 OR result=2 OR result=3) AND nmname LIKE '%'||#{param1}||'%' ORDER BY odseq DESC) q)
+			) WHERE rn &gt;= #{param2}
+		) WHERE rn &lt;= #{param3}
+	</select>
+	
+	<select id="getMemberOrderListKindFour" resultType="com.groupc.cnl.dto.NOrderVO">
+		SELECT * FROM (
+			SELECT * FROM (
+				SELECT ROWNUM as rn, q.* FROM (
+					(SELECT * FROM non_order_view 
+						WHERE (result=4 OR result=5) AND nmname LIKE '%'||#{param1}||'%' ORDER BY odseq DESC) q)
+			) WHERE rn &gt;= #{param2}
+		) WHERE rn &lt;= #{param3}
+	</select>
+	
+	<update id="changeMemberOrderResult">
+		UPDATE m_order_detail SET result=#{param2} WHERE odseq=#{param1}
+	</update>
+	
+	<update id="changeNonMemberOrderResult">
+		UPDATE nm_order_detail SET result=#{param2} WHERE odseq=#{param1}
+	</update>
+	
+	<update id="rewardPoint" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL rewardPoint(#{odseq})}
+	</update>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.groupc.cnl.dao.IProductDao">
+
+	<resultMap type="java.util.HashMap" id="productMap"/>
+	
+	<select id="getBestList" resultType="com.groupc.cnl.dto.ProductVO">
+		select * from best_pro_view
+	</select>
+	
+	<select id="getNewList" resultType="com.groupc.cnl.dto.ProductVO">
+		select * from new_pro_view
+	</select>
+	
+	<select id="getRecommandList" resultType="com.groupc.cnl.dto.ProductVO">
+		select * from recommand_pro_view
+	</select>
+	
+	<!-- 이어붙이기를 해야하는가? 에 대한 의문 -->
+	<select id="getProductCount" resultType="int">
+		SELECT COUNT(*) AS cnt FROM bookproduct WHERE kind LIKE '%'||#{param1}||'%' AND genre LIKE '%'||#{param2}||'%'
+	</select>
+	
+	<select id="getBestViewList" resultType="com.groupc.cnl.dto.ProductVO">
+		SELECT * FROM bestviewList WHERE rn &gt; 1
+	</select>
+	
+	<select id="getBestViewOneList" resultType="com.groupc.cnl.dto.ProductVO">
+		SELECT * FROM bestviewList WHERE rn = 1
+	</select>
+	
+	<select id="getNewViewList" resultType="com.groupc.cnl.dto.ProductVO">
+		SELECT * FROM newviewList WHERE rn &gt; 1
+	</select>
+	
+	<select id="getNewViewOneList" resultType="com.groupc.cnl.dto.ProductVO">
+		SELECT * FROM newviewList WHERE rn = 1
+	</select>
+	
+	<select id="getBestViewListAll" resultType="com.groupc.cnl.dto.ProductVO">
+		SELECT * FROM bestviewList WHERE rn &lt; 21
+	</select>
+	
+	<select id="getNewViewListAll" resultType="com.groupc.cnl.dto.ProductVO">
+		SELECT * FROM newviewList WHERE rn &lt; 21
+	</select>
+	
+	<select id="getLocalList" resultType="com.groupc.cnl.dto.ProductVO">
+		SELECT * FROM (
+		SELECT * FROM (
+		SELECT rownum AS rn, b.* FROM 
+		((SELECT * FROM localviewList WHERE useyn='y' AND kind LIKE '%'||#{param3}||'%' ORDER BY bseq DESC) b)
+		) WHERE rn &gt;= #{param1}
+		) WHERE rn &lt;= #{param2}
+	</select>
+	
+	<select id="getGlobalList" resultType="com.groupc.cnl.dto.ProductVO">
+		SELECT * FROM (
+		SELECT * FROM (
+		SELECT rownum AS rn, b.* FROM 
+		((SELECT * FROM globalviewList WHERE useyn='y' AND kind LIKE '%'||#{param3}||'%' ORDER BY bseq DESC) b)
+		) WHERE rn &gt;= #{param1}
+		) WHERE rn &lt;= #{param2}
+	</select>
+
+	<select id="getViewList" resultType="com.groupc.cnl.dto.ProductVO">
+		SELECT * FROM (
+		SELECT * FROM (
+		SELECT rownum AS rn, b.* FROM 
+		((SELECT * FROM bookproduct WHERE useyn='y' AND genre LIKE '%'||#{param3}||'%' ORDER BY bseq DESC) b)
+		) WHERE rn &gt;= #{param1}
+		) WHERE rn &lt;= #{param2}
+	</select>
+	
+	<select id="getProduct" resultType="com.groupc.cnl.dto.ProductVO">
+		select * from bookproduct where bseq=#{param1}
+	</select>
+	
+	<select id="getProductDetail" parameterType="java.util.HashMap" statementType="CALLABLE">
+		{ CALL getProductDetail(
+		#{bseq},
+		#{ref_cursor1, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=productMap}) } 
+	</select>
+	
+<!-- DB로 최근 본 상품내역 만들기
+	<insert id="insertRecentProduct" parameterType="java.util.HashMap" statementType="CALLABLE">
+		{ CALL insertRecentProduct(#{bseq}, #{id})}
+	</insert>
+	
+	<select id="selectRecentProduct" parameterType="java.util.HashMap" statementType="CALLABLE">
+		{ CALL selectRecentProduct(
+		#{id},
+		#{ref_cursor3, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=productMap}) } 
+	</select>
+ -->
+ 
+ 
+	
+	<select id="getSearchingCount" resultType="INTEGER">
+		SELECT COUNT(*) AS cnt FROM bookproduct 
+			WHERE useyn='y' AND bname LIKE '%'||#{param1}||'%' AND kind LIKE '%'||#{param2}||'%'
+	</select>
+	
+	<select id="getSearchViewList" resultType="com.groupc.cnl.dto.ProductVO">
+		SELECT * FROM (
+			SELECT * FROM (
+				SELECT ROWNUM AS rn, b.* FROM bookproduct b 
+					WHERE useyn='y' AND kind LIKE '%'||#{param1}||'%' AND bname LIKE '%'||#{param2}||'%' ORDER BY bseq DESC
+			) WHERE rn &gt;= #{param3}
+		) WHERE rn &lt;= #{param4}
+	</select>
+	
+	
+	
+	<select id="getbook_Detail" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{  CALL getbook_Detail( 
+			#{bseq},
+			#{ref_cursor , mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=productMap}
+		) }
+	</select>
+	
+<!-- 	<select id="getMobileBestViewList" result="">
+		</select> -->
+
+</mapper>

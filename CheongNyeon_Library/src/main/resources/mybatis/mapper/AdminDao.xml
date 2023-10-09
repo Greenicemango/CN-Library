@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.groupc.cnl.dao.IAdminDao">
+
+<resultMap  id="adminMap" type="java.util.HashMap"></resultMap>
+
+	<select id="getWorker" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{  CALL getWorker( 
+			#{adminId},
+			#{ref_cursor , mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=adminMap}
+		)  }
+	</select>
+
+	<select id="getMemberCnt" resultType="INTEGER">
+		SELECT COUNT(*) FROM member WHERE #{param1}=#{param2}
+	</select>
+
+	<select id="getBookproductCnt" resultType="INTEGER">
+		SELECT COUNT(*) FROM bookproduct WHERE #{param1}=#{param2}
+	</select>
+
+	<select id="getMOrderCnt" resultType="INTEGER">
+		SELECT COUNT(*) FROM order_view WHERE #{param1}=#{param2}
+	</select>
+
+	<select id="getNOrderCnt" resultType="INTEGER">
+		SELECT COUNT(*) FROM non_order_view WHERE #{param1}=#{param2}
+	</select>
+
+	<select id="getQnaCnt" resultType="INTEGER">
+		SELECT COUNT(*) FROM qna WHERE #{param1}=#{param2}
+	</select>
+	
+	<select id="getTestCnt" statementType="CALLABLE" resultType="java.util.HashMap">
+		{  CALL getTestCnt( 
+			#{membercnt, mode=OUT, jdbcType=INTEGER},
+			#{bookcnt, mode=OUT, jdbcType=INTEGER},
+			#{mordercnt, mode=OUT, jdbcType=INTEGER},
+			#{nordercnt, mode=OUT, jdbcType=INTEGER},
+			#{qnacnt, mode=OUT, jdbcType=INTEGER}
+		)  }
+	</select>
+	
+	<select id="getMainNoticeList" statementType="CALLABLE" resultType="java.util.HashMap">
+		{  CALL getMainNoticeList( 
+			#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=adminMap}
+		)  }
+	</select>
+	
+	<select id="getNoticeCount" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{ CALL getNoticeCount(
+		#{key},
+		#{cnt, mode=OUT, jdbcType=INTEGER}
+		) }
+	</select>
+	
+	<select id="getNoticeList" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{ CALL getNoticeList(
+		#{startNum}, #{endNum}, #{key},
+		#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=adminMap}
+		) }
+	</select>
+	
+	<select id="getNoticeDetail" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{ CALL getNoticeDetail(
+		#{nseq},
+		#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=adminMap}
+		) }
+	</select>
+	
+	<insert id="insertNotice" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL insertNotice(#{id}, #{subject}, #{content})}
+	</insert>
+	
+	<delete id="deleteNotice" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL deleteNotice(#{nseq})}
+	</delete>
+	
+	<select id="getAllWorker" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{ CALL getAllWorker(
+		#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=adminMap}
+		) }
+	</select>
+	
+	<select id="getMemberCount" resultType="INTEGER">
+		SELECT COUNT(*) FROM member WHERE id LIKE '%'||#{param1}||'%'
+	</select>
+	
+	<select id="getMemberList" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{ CALL getMemberList(
+		#{startNum}, #{endNum}, #{key},
+		#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=adminMap}
+		) }
+	</select>
+	
+	<update id="updateMemberByAdmin" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{ CALL updateMemberByAdmin(#{id}, #{name}, #{email}, #{phone}, #{zip_num}, #{address}, #{point}, #{useyn}, #{gender}) }
+	</update>
+	
+	<update id="updateMemberUseyn">
+		UPDATE member set useyn=#{param2} where id=#{param1}
+	</update>
+	
+	<update id="updateNotice" statementType="CALLABLE" parameterType="java.util.HashMap" >
+		{CALL updateNotice(#{subject}, #{content}, #{nseq})}
+	</update>
+	
+</mapper>

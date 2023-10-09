@@ -1,0 +1,558 @@
+@charset "UTF-8";
+
+body{ background:#fcf9f2; margin:0; padding:0; font-size:0.75em;  }
+#wrap { width: 971px;	text-align:left;	margin: 0 auto; background:#fcf9f2; min-height: 780px; }
+
+#logo { float: left; width: 180px; height: 100px; margin: 40px 0 0 40px;}
+
+/* header */
+/* header 메뉴 top menu */
+#top_menu{position:relative;}
+nav#top_menu{float:right; margin:20px 64px 0 0;}
+nav#top_menu ul{width:800px;}
+nav#top_menu ul li{ display:block; height:30px; float:right; font-family: Verdana; font-size:90%;}
+nav#top_menu a { text-decoration: none; display: inline-block; text-align: center; margin-left:5px; padding-right:5px; 
+color:#6F0C78; font-weight: bold; border-right: 1px solid gray;}
+nav#top_menu a:hover {	color: blue;	font-weight: bold;}
+
+#top{ width:960px; height:130px;/* background-color:white; */}
+/* header 검색창 search */
+#logo {position:relative; float:left; text-align: center; width:250px; height:80px;bottom:30px; /* border:1px solid black; */ margin-right:0px;}
+#logo img{margin:0 auto;}
+
+#search{position:relative; width:450px; height:50px; top: 65px; left:50px;border:2px solid green; margin-left:253px; margin-right:0;}
+.day_box{position: relative; margin:0 auto; bottom:143px; left: 5px; width: 440px; height:36px; border:0px;  float:left;}
+#day_font {float:left; width: 100px; height:36px; font-size:120%; background:none;
+	font-weight:bold; line-height:36px; border:0px; text-align:center; margin-right:2px;
+	text-decoration:none; color:green;}
+#searchbox{float:left; font-size:16px; width:280px; height:36px; line-height:36px;border:0px; outline:none; font-size: 120%; color:green;
+background-color:#fcf9f2;}
+#button1 {float:left; background-image:url("../images/search.png"); width:50px;; height:40px; background-repeat:no-repeat; border:0px; overflow:hidden}
+
+#mainFrame{position:relative; margin:0 auto; padding:0px;}
+
+#cartShake{animation: shake 0.5s;}
+
+/* header index_menu */
+#main_menu{position:relative; margin:0 auto; padding:0px;}
+nav#index_menu {margin: 0 auto; padding:0px; float: left; overflow:hidden; }
+nav#index_menu ul {list-style: none;font-family: Verdana;}
+nav#index_menu ul li {float: left;margin: 0 0 0 0;font-size: 14pt;  text-align:center; font-weight:bold;
+width:180px; /* border: 1px solid gray;  *//* background:white; */}
+nav#index_menu a {display: block;height: 20px;text-decoration: none;color: black;padding: 10px; 
+border-radius:10px;transition: all ease 0.5s 0s;}
+nav#index_menu a:hover {font-size:110%; transform:scaleY(1.3);/* background:red;  */
+background:green; color:white; border-radius:3px 3px;}
+
+/* index.jsp */
+/* mainFrame */
+#mainFrame{height:1300px; position:relative; margin:0 auto;}
+#view{position: relative; width:954px; height:400px; overflow:hidden; margin:0 auto;}
+
+#imgs{position: absolute; width:2000px; height:398px; left:0px; top:0px; transition:1s;}
+#lbutton{position:absolute; width:48px; height:48px; bottom:160px; left:0px;border-radius: 50%; overflow:hidden; 
+opacity:0.5; visibility:hidden;
+background-image:url(../images/main/ico_btn.png); background-position: -60px -460px;}
+#rbutton{position:absolute; width:48px; height:48px; bottom:160px; right:0px;border-radius: 50%; overflow:hidden;
+opacity:0.5; visibility:hidden; 
+background-image:url(../images/main/ico_btn.png); background-position: 0px -460px;}
+
+/* product */
+#bestProduct {position:relative; width:960px; height:800px; margin: 0 auto; /* border:1px solid black; background:white;*/ }
+.book{position:relative; width:162px; height:320px;float:left;top:40px; left:40px; margin-right:60px; margin-bottom:40px;
+ /*  background:yellowgreen;margin: 0 auto;  border:1px solid black;*/  text-align:left;}
+.bookimgs{cursor:pointer;}
+.booktitle{position:relative; width:162px; height:40px; margin:0 auto; left:5px;
+font-size:110%; line-height:40px; font-weight:bold; overflow: hidden;text-overflow: ellipsis;white-space: nowrap; cursor:pointer;}
+.bookwrite{position:relative; width:162px; height:20px; margin:0 auto; left:5px; cursor:pointer;}
+.bookprice{position:relative; width:162px; height:20px; margin:0 auto; left:5px; cursor:pointer;}
+.overview{position:absolute; width:162px; height:46px; top: 188px;/* border:1px solid red; */
+background:black; opacity:0.5; overflow:hidden; visibility:hidden;}
+/* 0214 update */
+.tocart{position:relative; width:70px; height:34px; left:10px; top:4px; margin-right:10px; float:left;
+text-align:center; color:white; font-size:120%; line-height:34px; font-weight:bold; cursor:pointer; filter: invert(100%);}
+.cartImg{display: inline-block; width:34px; height:auto; }
+.tobuy{position:relative; width:70px; height:34px; top:4px; margin: 0 auto; float:left;
+text-align:center; color:white; font-size:120%; line-height:34px;font-weight:bold; cursor:pointer; filter: invert(100%);}
+.buyImg{display: inline-block; width:34px; height:auto; }
+.tocart:hover{text-decoration:underline; background-color:white; color:black; filter: invert(0%);}
+.tobuy:hover{text-decoration:underline; background-color:white; color:black; filter: invert(0%);}
+
+.tab{ margin:0 auto; top:1000px; width:950px;  height:780px;  overflow:hidden; border:4px solid #DAEFE0;}
+.tab ul{padding:0;  margin:0; list-style:none; width:100%; height:auto; overflow:hidden;}
+.tab ul li{ display:inline-block; width:33.3333%;  float:left;line-height:40px;  text-align:center; 
+cursor:pointer; font-size:120%; font-weight:bold;}
+.tab ul li:hover{text-decoration:underline; background-color:#DAEFE0;}
+.tab ul li.on{ background:#DAEFE0;}
+.tab .conBox{ width:100%;  height:auto; overflow:hidden; min-height:250px;background:#DAEFE0; display:none;
+ text-align:center;}
+.tab .conBox.on{ display:block; }
+
+
+#bestProduct {width: 910px; min-height: 260px; background: #DAEFE0;
+padding: 10px;	text-align: center; margin:0 auto;}
+#item {	width: 200px;	float: left;	margin: 0 13px; 	text-align: center; }
+#item img {overflow:hidden; border:1px solid gray;}
+
+
+.clear {clear: both;}
+/* footer.jsp */
+footer {position:relative; margin: 0 auto; height: 100px; margin-top:10px;}	
+footer #footerlogo {float:left;margin-right:10px;}
+footer #copy {float:left; margin: 5px 0 0 0; 	width:450px; font-size:80%; 
+/* border: 1px solid gray; */}
+footer #serviceimg{float:right; margin:10px 0 0 0;}
+
+/* member */
+
+/* contract.jsp */
+.con_text{position:relative; display: inline-block;}
+.con_check{position:relative; top:-4px;color:red; font-weight:bold; font-size:14px;}
+#agree{position:relative; width:720px; text-align:left; display: inline-block; font-size:17px; margin-bottom:5px;}
+
+/* findHeader.jsp */
+/* find id, pw */
+#findHeader{position:relative; width:100%; height:100px; text-align:center;}
+.findHeader1{position:relative; width:960px; height:100px; display: inline-block;}
+#fhLogo{position:relative; float:left; width:248px; height:100px; margin-right:15px;}
+
+
+.findHeader1>span{position:relative; float:left; width:auto; height:100px; font-weight:bold; font-size:20px;}
+.findHeader1>span>a{text-decoration:none; text-decoration-line:none; line-height:100px; color: inherit}
+.division{line-height:100px; color:black;}
+a:link{text-decoration: none;}
+a:visited {text-decoration: none;}
+
+
+#sideButton{position:absolute; right:0%; top:30px; width:250px; height:40px;}
+#sideButton .sideButton1{position:relative; float:left; width:116px; height:36px; border:none;
+line-height:40px; font-size:16px; border: 2px solid #d8d8d8;}
+.sideButton1 a{text-decoration:none; text-decoration-line:none; color: inherit; font-weight:bold;}
+#sideButton .sideButton1:nth-child(1){margin-right:10px; background:white;}
+#sideButton .sideButton1:nth-child(2){background:white;}
+
+#findMain{position:relative; width:100%; height:auto; text-align:center;}
+.findMain1{position:relative; width:960px; height:auto; display:inline-block; margin:60px 0; background:white; border: 2px solid #d8d8d8}
+.findMain1>p{padding:15px 0; font-size:15px;}
+.findMain2{position:relative; width:500px; height:auto; display:inline-block; background:white;}
+.method{height:50px; line-height:50px; background:#fcf9f2; border:1px solid #6699cc; font-weight:bold; font-size:16px;}
+.inputbox{position:relative; height:1px; padding:0 0 10px 0; background:#f8f8f8; visibility:hidden; border-top:1px solid #6699cc; border-bottom:1px solid #6699cc;}
+.textbox{position:relative; padding:6px 12px; width:460px; height:26px; background:white; border:1px solid grey; margin-top:10px;}
+.findButton{position:relative; width:486px; height:40px; color:white; background:blue; border:none; font-weight:bold; font-size:16px;}
+
+.result{position:relative; display:inline-block; width:500px; height:250px; margin:20px 0; background:white;}
+.resultBox{position:relative; display:table-cell; vertical-align:middle; height:188px; width:498px; border:1px solid grey; background:blue;}
+.resultText{color: red;	font-weight: bold;}
+.resultBox1{position:relative; width:500px; height:40px; margin-top:20px;}
+.resultBox1 input{position:relative; width:242px; height:40px; background:yellow; border:1px solid grey; padding:0 10px;}
+.resultBox1 input:first-child{margin-right:10px;}
+
+
+/* login.jsp
+#login{position:relative; width:800px; height:500px;top:10px; margin:0 auto;background-color:#fcf9f2;}
+#login form{height: 400px;}
+#userLogin form div{position:relative; width:360px; height:54px;
+margin:0 auto;margin-bottom: 14px; top:20px;}
+#userLogin .logininput{width:350px; height:48px; line-height:48px;border:0px; 
+outline:none; font-size: 120%; color:green;}
+#userLogin .checkbox{position:relative; width:360px; height: 40px; margin:0 auto;}
+
+
+#nonmemberLogin form div{position:relative; width:360px; height:54px;  
+margin:0 auto; margin-bottom: 14px; top:20px;}
+#nonmemberLogin .logininput{width:350px; height:48px; line-height:48px;border:0px; 
+outline:none; font-size: 120%; color:green;}
+
+.login_a{position:relative; width: 300px; height:50px;}
+#login a{position:relative; margin:0 auto; text-decoration:none; color: black;}
+#login a:hover{text-decoration:underline;}
+.login_btn{position:relative; background-color: blue; width:350px; height:60px; color:white; text-align:center;
+font-size:150%; font-weight:bold;} */
+
+/* 0331 login*/
+
+#loginBox{
+    position:relative; 
+    width:800px; 
+    height:460px;
+    top:10px; 
+    padding:30px 70px 30px 70px;
+    margin:0 auto;
+    background-color:#DAEFE0;
+}
+
+.memberLoginBox{
+    position:relative; 
+    float:left; 
+    width:360px; 
+    height:300px;
+    background: #DAEFE0;
+    margin: 10px;
+}
+
+.loginTitle{
+    width:360px;
+    height: 40px;
+    display: inline-block;
+    line-height: 40px;
+    font-size: 130%;
+    font-weight: bold;
+    text-align: center;
+}
+
+.memberLoginBox form div{
+    position:relative; 
+    width:360px; 
+    height:54px;
+    margin:0 auto;
+    margin-bottom: 14px; 
+    top:20px;
+}
+
+.login_a a{
+    position:relative; 
+    width: 300px; 
+    height:50px;
+    margin:0 auto; 
+    text-decoration:none; 
+    color: black;
+    text-align: center;
+}
+
+.login_a a:hover{
+    text-decoration:underline;
+}
+
+.logininput{
+    width:350px; 
+    height:48px; 
+    line-height:48px;
+    border:0px; 
+    outline:none; 
+    font-size: 120%; 
+    color:green;
+    margin: 0 0 40px 0;
+}
+
+.login_btn{
+    position:relative; 
+    background-color: blue;
+     width:350px; height:60px;
+    color:white; 
+    text-align:center;
+    font-size:150%; 
+    font-weight:bold;
+}
+
+/* join */
+#joinBox{position:relative; width:800px; height:auto; text-align:center; display:inline-block; background:#fcf9f2; padding:10px 0;}
+#joinLabel{position:relative; width:950px; height:65px; background:#fcf9f2; text-align:left; padding-left:20px; line-height:65px; font-size:18px; color:#56C0D3;}
+
+#joinInfo{position:relative; width:650px; height:auto; display:inline-block;}
+.warning{position:relative; width:640px; height:50px; text-align:left; padding-left:10px; font-size:14px; line-height:25px; margin-top:5px;}
+
+td{padding:5px; height:35px;}
+.mInfo{position:relative; text-align:left; border-collapse:collapse; border-color:#C6C6C6; background:white; margin-top:5px;}
+.mInfo:last-child{margin-top:15px;}
+
+#idCheckLabel{position:relative; width:950px; height:65px; background:#fcf9f2; text-align:left; padding-left:20px; line-height:65px; font-size:18px; color:#56C0D3;}
+
+/* withdrawal */
+#joinInfoFlex{position:relative; width:800px; height:auto; display:flex; justify-content:center; align-items:center;
+flex-wrap: nowrap; text-align: center;}
+
+.withdrawalbtn{height: 50px; width: 150px; border: 1px solid #43A22F; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: #fff; background-color:#43A22F;}
+
+/* mypage */
+/* 장바구니 cartList.jsp */
+#cartList {border-collapse: collapse;	border-top: 1px solid #DDDEDB;	border-bottom: 1px solid #DDDEDB; width: 80%;	
+margin-bottom: 30px; font-size:10pt;}
+#cartList td {border-bottom: 1px solid #DDDEDB;	text-align: center;}	
+#cartList th {border-bottom: 1px solid #DDDEDB;	text-align: center; background-color:#FFFFFF;}	
+
+form #buttons1 {	margin: 20px 0 0 0; }
+form  #cancel{height: 30px;	width: 70px; 	border: 1px solid #666; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center;	color:black;margin: 0 0 0 20px;  }
+form  #submit{height: 30px;	width: 70px; 	border: 1px solid #666; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center;	color: #fff; background-color:blue;	margin: 0 0 0 20px;  }
+form #delete{height: 30px;	width: 70px; 	border: 1px solid #666; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center;	color:black;margin: 0 0 0 20px;  }
+form #submit_order,#submit_delete{height: 30px;	width: 100px; 	border: 1px solid #666; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center;	color:black;margin: 0 0 0 20px;  }
+
+#cartbtn2{margin:10px 0;}
+#cartbtn2 .cancel{height: 30px;	width: 100px;  border: 1px solid #43A22F; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: #fff; background-color:#43A22F; margin: 0 0 0 20px; }
+#cartbtn2 .submit{height: 30px;	width: 100px;  border: 1px solid #fff; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: black; background-color:#fff; margin: 0 0 0 20px;}
+
+#cartList a:link, #cartList a:visited{color:black;}
+#cartList a:hover{color:#F90; transition-duration:1s;}
+
+/* mypage.jsp 220220 */
+#bodyFrame{position:relative;top:50px;left:160px;width:700px;height:700px;}
+.mypageBox{position:absolute; width:300px; height:300px; margin:0px 10px 10px 10px; border:1px solid black;
+padding-left:20px;background-color:white; border-radius: 30px; box-shadow: 3px 3px 5px black;}
+.mypageBox div{padding:14px; font-size:130%;}
+.mypageBox a{text-decoration:none; color:black;}
+.mypageBox a:hover{text-decoration:underline; color:green;}
+
+/* sub_menu.jsp */
+#sidemenu{position:relative;float:left; top:30px; width:150px; border:1px solid black;
+    border-radius: 30px;}
+#sidemenu div{position:relative; float:left; width:120px; height:40px; padding-left:20px; font-size:120%; line-height:30px; }
+#sidemenu ul{position:relative; width:100px; height:1px; padding:0px 0px 0px 10px; visibility:hidden;}
+#sidemenu ul li{width:100px;height:1px; list-style:none; padding:2px 0px 2px 2px; position:relative;font-size:70%;}
+#sidemenu ul li a{text-decoration:none; color:black;}
+#sidemenu ul li a:hover{text-decoration:underline; color:green;}
+#sub_img{text-align:center;}
+
+/* product */
+
+/* product side menu */
+.floating{position: fixed; top: 300px; width:140px; border:1px solid black;}
+.productgenre{width:130px; height:40px; background-color:green;
+font-size:120%; font-weight:bold; line-height:40px; padding-left:10px;}
+#genreall{font-size:105%; font-weight:bold;}
+.genrelist{left:20%; width:200px; height:40px; line-height:40px; right:20px; padding-left:10px;}
+.genrelist a{text-decoration:none; color:green; font-size:130%;}
+.genrelist:hover{text-decoration:underline; font-size:105%; color:yellowgreen;}
+	
+/* productList */
+#product_Area{position:relative; width:800px; height:2000px; left:16%;/* border:1px solid black; */ }
+.product_none_box{margin-top:20px;}
+/* box one */
+.bookone {position:relative; width:670px; height:300px; margin-left:10px; margin-right:20px;float:left;}
+
+.bookoneimg {position:relative; float:left; overflow:hidden;} 
+.bookoneimg img{width:177px; height:244px; border:1px solid green; margin:0px; padding:0px; overflow:hidden;}
+
+.bookoneright{position:relative; width:440px; height:200px;float:left; }
+.bookonelist{position:relative; width:400px; height:30px;margin:0px;float:left;
+font-size:120%;float:left;padding-left:20px; padding-top:10px;}
+
+.bookonebtn{position:relative;float:left; width:400px; height:35px; top:10px; margin:2px; overflow:hidden; 
+padding-left:20px;}
+.bookonebtn a{color: white; margin-right:10px; width:100px; background-color:green; 
+line-height:35px; text-align:center; float:left; text-decoration:none; border:1px solid black;}
+.bookonebtn a:hover{text-decoration:underline; font-weight:bold; font-size:110%}
+
+/* box list */
+.bookbox {position:relative; width:330px; height:160px; margin-left:10px; margin-right:20px;float:left;}
+.bookbestcount{position:absolute; width: 20px; height:20px; color: white; background-color:red; line-height:20px; 
+box-shadow:1px 1px 1px 1px gray; border:1px solid black; text-align:center; font-weight:bold; font-size:110%;}
+.bookboximg {position:relative; float:left; overflow:hidden;} 
+.bookboximg img{width:80px; height:110px; border:1px solid green; margin:0px; padding:0px; overflow:hidden;}
+
+.bookboxright{position:relative; width:240px; height:70px;float:left; }
+.bookboxlist{position:relative; width:200px; height:19px;margin:0px;float:left;
+font-size:90%;float:left;padding-left:5px;}
+
+.bookboxbtn{position:relative; width:300px; height:24px; top:10px; margin:2px; overflow:hidden;}
+.bookboxbtn a{color: white; margin-right:10px; width:80px; background-color:green; 
+line-height:20px; text-align:center; float:left; text-decoration:none; border:1px solid black;}
+.bookboxbtn a:hover{text-decoration:underline; font-weight:bold; font-size:102%}
+
+/* productviewList */
+.listbox{position:relative; float:left; width:700px; height:200px; border-bottom:1px solid black;}
+.listbox div{position:relative; float:left;}
+
+.list_in{position:relative; float:left; margin-right:10px;}
+
+.list_in input[type=checkbox]{position:relative; vertical-align:middle; width:20px; height:20px;}
+.list_in img{width:123px; height:170px; padding:13px;}
+.list_in div{position:relative; float:left; width:330px; height:30px; padding:5px 0 0 30px; }
+.list_in div p {margin:0px; padding:0px; font-size:90%;}
+.list_in div span {margin:0px; padding:0px;}
+.list_in a {color: white; margin-right:10px; width:100px; background-color:green; margin-bottom:7px;
+line-height:35px; text-align:center; float:left; text-decoration:none; border:1px solid black;}
+.list_in input[type=text]{width:30px; height:20px; line-height:20px; text-align:center;}
+
+
+/* productDetail css 220216 */
+.detailbox{position:relative; float:left; width:700px; /* border:1px solid black; */}
+
+.pdLeft{position:relative; float:left;width:198px; height:300px; border:1px solid black; overflow:hidden;}
+.pdRight{position:relative; float:left;width:300px; height:300px; margin-left:30px; }
+.pdRightList {position:relative;height:43px;line-height:43px;/*  border:1px solid black;  */}
+.pdRightList div {position:relative;float:left;}
+.pdRightreview {position:relative; float:left; margin-right:10px;}
+
+.pdbott{position:relative; float:left;width:700px; /* border:1px solid black; */}
+.pdbott>ol{list-style:none; /* border:1px solid black; */ padding:0px; }
+
+.pdbott>ol>li>a{position:relative; float:left; width:114px;  background-color:green; color: white;
+border:1px solid black; margin:0 auto; padding:10px 0 10px 0; text-decoration:none; text-align:center;}
+.pdbott>ol>li>a:hover{text-decoration:underline; font-weight:bold;}
+
+ .pdcontent{padding:50px 0px 20px 20px;}
+
+#radio_score>input{float:left; margin:0 2px 0 2px;}
+.starimg{float:left;width:14px; height:14px; background-image:url(../images/main/ico_star.png); 
+background-position:0px -20px; overflow:hidden; line-height:20px;}
+
+#review_content{outline: none;resize: none;background:none;}
+
+.pd_review_btn{padding:37px 30px 38px 30px; background-color:green; color:white;
+text-decoration:none;position:relative;float:right; margin-right:30px;}
+.pd_review_btn:hover{text-decoration:underline; font-weight:bold;}
+
+/* productDetail reviewbox 220216 */
+#reviewbox>ul{list-style:none; margin:10px; }
+#reviewbox>ul>li{float:left;}
+#reviewbox>textarea{padding:10px 20px 10px 0px; resize: none;outline: none; border:0px; background-color:#fcf9f2;}
+.pdto_login{padding:10px 20px 10px 20px; background-color:green; color:white;
+border:1px solid black; margin-right:30px;float:right;}
+.pdto_login:hover{text-decoration:underline;}
+
+
+
+/* qna 220216 */
+.mybox{position:relative; width:660px; height:400px; }
+#qnaList {margin-left:50px; border-collapse: collapse; border-top: 1px solid #DDDEDB;	border-bottom: 1px solid #DDDEDB; width: 80%;	
+margin-bottom: 30px; font-size:10pt;}
+#qnaList td { border-bottom: 1px solid #DDDEDB; text-align: center;}	
+#qnaList th { border-bottom: 1px solid #DDDEDB; text-align: center; background-color:#FFFFFF;}	
+
+form #buttons2 {margin: 20px 0 0 0; }
+form  #cancel{height: 30px;	width: 100px;  border: 1px solid #fff; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: black; background-color:#fff; margin: 0 0 0 20px;  }
+form  #submit{height: 30px;	width: 100px;  border: 1px solid #43A22F; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: #fff; background-color:#43A22F; margin: 0 0 0 20px;  }
+
+#qna{margin: 20px 0; font-weight: normal; }
+#qna article{ float: right; width: 680px; padding-right: 10px; font-family: Verdana; font-size: 1em; line-height: 1.5em; }
+
+#side2{font-weight:bold; font-size:15px;margin-left:70px;}
+
+#sub_menu { width: 250px; 	float: left; }
+#sub_menu ul { list-style: none; }
+
+#sub_menu a {float: left; text-decoration: none; color: black;  font-family:Verdana ; font-weight: bold;  font-size: 12px;	display: block;	
+height: 15px; width: 160px; padding: 7px;	
+}
+#sub_menu a:hover {color: #F90; font-weight: bold;  font-size: 12px;	font-family: Arial, Helvetica, sans-serif; }
+
+#write form {margin: 20px 0 0 0; width: 670px; float:right;}
+#write form fieldset {padding: 10px 0 20px 5px;	border: none;}
+#write form fieldset legend {	font-size: 20px; border-bottom: 1px dotted #666; width: 600px;  padding: 5px 0; }
+
+#write form label { width: 140px;  float: left;  margin: 5px 0; }
+#write form input {margin: 5px 0;  border: 1px solid #999; 	background-color: #FCFDEA; } 
+
+
+
+/* notice */
+form #plus{float:right;}
+#noticeList{margin-left:50px; border-collapse: collapse; border-top: 1px solid #DDDEDB;	border-bottom: 1px solid #DDDEDB; width: 80%;	
+margin-bottom: 30px; font-size:10pt;}
+#noticeList td { border-bottom: 1px solid #DDDEDB; text-align: center;}	
+#noticeList th { border-bottom: 1px solid #DDDEDB; text-align: center; background-color:#FFFFFF;}	
+
+#notice{margin-left:50px; border-collapse: collapse; border:1px dotted #999; width: 80%;	
+margin-bottom: 30px; font-size:10pt;}
+
+#noticeView{float:right; margin-bottom:10%; border-collapse: collapse; border-top: 1px solid #DDDEDB;	border-bottom: 1px solid #DDDEDB; width: 73%;	
+margin-bottom: 30px; font-size:10pt; font-family:Verdana;}
+#noticeView td { border-bottom: 1px solid #DDDEDB; text-align: center;}	
+#noticeView th { border-bottom: 1px solid #DDDEDB; text-align: center; background-color:#FFFFFF;}	
+
+
+form #buttons3 {margin: 20px 0 0 0; }
+form  #cancel{height: 30px;	width: 100px;  border: 1px solid #43A22F; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: #fff; background-color:#43A22F; margin: 0 0 0 20px;  }
+form  #submit{height: 30px;	width: 100px;  border: 1px solid #fff; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: black; background-color:#fff; margin: 0 0 0 20px;  }
+
+
+form #buttons4 {margin: 20px 0 0 0; }
+form  #cancel{height: 30px;	width: 100px;  border: 1px solid #43A22F; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: #fff; background-color:#43A22F; margin: 0 0 0 20px;  }
+form  #submit{height: 30px;	width: 100px;  border: 1px solid #fff; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: black; background-color:#fff; margin: 0 0 0 20px;  }
+
+/* nonmember buy form */
+.nbuyform td{padding-left:10px; font-weight: bold;}
+.nbuyform{position:relative; text-align:left; border-collapse:collapse; border-color:#C6C6C6; background:white; margin-top:5px; display:inline-block;}
+
+/* top button */
+.toTop{position:relative; top:100px; left:80px; background:url('../images/top.png') no-repeat; background-size: contain; width:60px; height:60px;
+		-ms-transform: rotate(-90deg); -webkit-transform: rotate(-90deg); transform: rotate(-90deg); border-radius:50%; border:1px solid grey;}
+
+
+
+/* nOrderResult */
+#nResult td{text-align:center;}
+#nResult td:nth-child(2n-1){width:70px; font-weight:bold;}
+#nResult2 td{text-align:center;}
+#nResult2 tr:first-child{font-weight:bold;}
+#norder{margin: 20px 0; font-weight: normal; width:680px; display: inline-block;}
+#qna article{ width: 680px; padding-right: 10px; font-family: Verdana; font-size: 1em; line-height: 1.5em;}
+
+/* cancel order */
+#orders{margin:10px 0;}
+#orders #cancelorder{height: 30px;	width: 100px;  border: 1px solid #fff; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: black; background-color:#fff; margin: 0 0 0 20px;  }
+#orders #cancel{height: 30px;	width: 100px;  border: 1px solid #43A22F; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: #fff; background-color:#43A22F; margin: 0 0 0 20px;  }
+#orders #submit{height: 30px;	width: 100px;  border: 1px solid #fff; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: black; background-color:#fff; margin: 0 0 0 20px;  }
+
+
+/* mypage order */
+#cartList th, #cartList td{text-align:center;}
+
+
+/* view - review, qna */
+
+#View2{float:right; margin-bottom:10%; border-collapse: collapse; border-top: 1px solid #DDDEDB;	border-bottom: 1px solid #DDDEDB; width: 73%;	
+margin-bottom: 30px; font-size:10pt; font-family:Verdana;}
+#View2 td { border-bottom: 1px solid #DDDEDB; text-align: center;}	
+#View2 th { border-bottom: 1px solid #DDDEDB; text-align: center; background-color:#FFFFFF;}	
+
+form #buttons5{margin: 20px 0 0 0; }
+form  #cancel{height: 30px;	width: 100px;  border: 1px solid #43A22F; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: #fff; background-color:#43A22F; margin: 0 0 0 20px;  }
+form  #submit{height: 30px;	width: 100px;  border: 1px solid #fff; border-radius: 5px; 
+font-size: 14px; background-repeat: repeat-x; background-position: center center; color: black; background-color:#fff; margin: 0 0 0 20px;  }
+
+
+
+/* mypage order */
+#orderList {border-collapse: collapse;	border-top: 1px solid #DDDEDB;	border-bottom: 1px solid #DDDEDB;
+margin-bottom: 10px; font-size:10pt;}
+#orderList td {border-bottom: 1px solid #DDDEDB;	text-align: center; height:50px;}	
+#orderList th {border-bottom: 1px solid #DDDEDB;	text-align: center; background-color:#FFFFFF; height:50px;}
+
+
+
+
+
+/* event */
+.eventBox{ margin:0 auto; top:1000px; width:950px;  height:auto;  overflow:hidden;}
+#event {position:relative; float: left; width:200px; height:330px; vertical-align: middle; margin-left:25px;
+		font-size:20px;}
+#event>span{font-size:12px;}
+.eventImg{width:200px; height:auto;}
+
+#eventDetail{width:900px; height:auto; margin-left:40px; margin-top:20px;}
+.eventDetailImg{width:900px; height:auto;}
+
+
+
+
+/* cart alert */
+#cartAlertBox{position:relative; left:58px; top:-42px; width:50px;}
+#cartAlertBox img{width:25px; height:25px; padding-top:20px;}
+.cartAlert{position:absolute; width: 20px; height:20px; color: white; background-color:red; line-height:20px; 
+ border-radius:50%; text-align:center; font-weight:bold; font-size:110%; left: 15px; top: 12px;}
+ 
+ 
+#myPageBox{position:relative; left:10px; top:6px; width:50px}
+#myPageBox img{width:25px; height:25px; padding-top:20px;}
+
+#qnaAlertBox{position:relative; left:110px; top:-92px; width:50px;}
+#qnaAlertBox img{width:25px; height:28px; padding-top:20px;}
+
+#total{width:200px; height:60px; top: -90px;float:right; position:relative;}

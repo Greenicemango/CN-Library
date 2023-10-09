@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.groupc.cnl.dao.IReviewDao">
+
+	<resultMap type="java.util.HashMap" id="reviewMap"/>
+	
+	<select id="getScoreAVG" resultType="integer">
+		SELECT AVG(score) FROM review WHERE bseq = #{param1}
+	</select>
+	
+	<select id="getReviewCnt" resultType="integer">
+		SELECT COUNT(*) FROM review WHERE bseq = #{param1}
+	</select>
+	
+	<insert id="insertReview" parameterType="java.util.HashMap" statementType="CALLABLE">
+		{ CALL insertReview(#{id}, #{bseq}, #{radio_review}, #{review_content})}
+	</insert>
+	
+	
+	<select id="listReview" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL listReview( 
+			#{id},
+			#{ref_cursor , mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=reviewMap}
+		)  }
+	</select>
+	
+	
+	<select id="getReview" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL getReview( 
+			#{bseq},
+			#{ref_cursor2, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=reviewMap}
+		)  }
+	</select>
+	
+	
+	<select id="getReview2" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{CALL getReview2( 
+			#{rseq},
+			#{ref_cursor , mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=reviewMap}
+		)  }
+	</select>
+	
+	<select id="getReviewByBseq" parameterType="INTEGER" resultType="com.groupc.cnl.dto.ReviewVO">
+		SELECT * FROM review WHERE bseq=${param1}
+	</select>
+	
+	<insert id="mobileInsertReview" parameterType="com.groupc.cnl.dto.ReviewVO">
+		INSERT INTO review(rseq, bseq, id, content, score)
+			VALUES(review_seq.nextVal, #{bseq}, #{id}, #{content}, #{score})
+	</insert>
+	
+	<select id="getReviewListById" parameterType="String" resultType="com.groupc.cnl.dto.ReviewVO">
+		SELECT * FROM review WHERE id=${param1}
+	</select>
+	
+	<select id="getReviewByRseq" parameterType="INTEGER" resultType="com.groupc.cnl.dto.ReviewVO">
+		SELECT * FROM review WHERE rseq=${param1} ORDER BY indate DESC
+	</select>
+	
+</mapper>

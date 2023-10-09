@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.groupc.cnl.adminDao.IAdminEventDao">
+
+	<resultMap id="adminEventMap" type="java.util.HashMap"></resultMap>
+	
+	<select id="getEventCount" resultType="INTEGER">
+		SELECT COUNT(*) FROM event
+	</select>
+	
+	<select id="getEventList" resultType="com.groupc.cnl.dto.EventVO">
+		SELECT * FROM (
+			SELECT * FROM (
+				SELECT ROWNUM AS rn, e.* FROM event e ORDER BY eseq DESC
+			) WHERE rn &gt;= #{param1}
+		) WHERE rn &lt;= #{param2}
+	</select>
+	
+	<insert id="InsertEvent" parameterType="com.groupc.cnl.dto.EventVO">
+		INSERT INTO event(eseq, title, start_date, end_date, image, description_img)
+			VALUES(event_seq.nextVal, #{title}, #{start_date}, #{end_date}, #{image}, #{description_img} )
+	</insert>
+	
+	<select id="getEventOne" parameterType="INTEGER" resultType="com.groupc.cnl.dto.EventVO">
+		SELECT * FROM event WHERE eseq=#{param1}
+	</select>
+	
+	<update id="updateEvent" parameterType="com.groupc.cnl.dto.EventVO">
+		UPDATE event SET title=#{title}, start_date=#{start_date}, end_date=#{end_date}, 
+			image=#{image}, description_img=#{description_img}
+				WHERE eseq=#{eseq}
+	</update>
+	
+	
+	<select id="getEventCountENDNOTNULL" resultType="INTEGER">
+		SELECT COUNT(*) FROM event WHERE event_enddate IS NOT NULL ORDER BY eseq DESC
+	</select>
+	<select id="getEventCountENDNULL" resultType="INTEGER">
+		SELECT COUNT(*) FROM event WHERE event_enddate IS NULL ORDER BY eseq DESC
+	</select>
+	
+	
+	<select id="getEventListENDNOTNULL" resultType="com.groupc.cnl.dto.EventVO">
+		SELECT * FROM (
+			SELECT * FROM (
+				SELECT ROWNUM AS rn, e.* FROM ( 
+					SELECT * FROM event WHERE event_enddate IS NOT NULL ORDER BY eseq DESC) e
+			) WHERE rn &gt;= #{param1}
+		) WHERE rn &lt;= #{param2}
+	</select>
+	
+	<select id="getEventListENDNULL" resultType="com.groupc.cnl.dto.EventVO">
+		SELECT * FROM (
+			SELECT * FROM (
+				SELECT ROWNUM AS rn, e.* FROM ( 
+					SELECT * FROM event WHERE event_enddate IS NULL ORDER BY eseq DESC) e
+			) WHERE rn &gt;= #{param1}
+		) WHERE rn &lt;= #{param2}
+	</select>
+	
+	<update id="eventEnd" parameterType="INTEGER">
+		UPDATE event SET event_enddate=SYSDATE WHERE eseq=#{param1}
+	</update>
+	
+</mapper>

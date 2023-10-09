@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.groupc.cnl.dao.IPayDao">
+	<!-- -->
+	
+	<select id="getPayList" parameterType="String" resultType="com.groupc.cnl.dto.PayVO">
+		SELECT * FROM pay WHERE id=#{param1} ORDER BY pay_indate DESC
+	</select>
+	
+	<insert id="payCharging" parameterType="com.groupc.cnl.dto.PayVO">
+		INSERT INTO paysystem(payseq, id, payinmoney, bank, bank_number, update_date)
+			VALUES(paysystem_seq.nextVal, #{id}, #{payinmoney}, #{bank}, #{bank_number}, SYSDATE)
+	</insert>
+	
+	<select id="getPayInMoney" parameterType="String" resultType="com.groupc.cnl.dto.PayVO">
+		SELECT * FROM paysystem WHERE id=#{param1} AND payoutmoney IS NULL ORDER BY payseq DESC
+	</select>
+	
+	<select id="getPayOutMoney" parameterType="String" resultType="com.groupc.cnl.dto.PayVO">
+		SELECT * FROM paysystem WHERE id=#{param1} AND payinmoney IS NULL ORDER BY payseq DESC
+	</select>
+	
+	<update id="updatePayMoney">
+		UPDATE member SET paymoney=${param2} WHERE id=#{param1}
+	</update>
+	
+	<select id="getPayLastMonthList" resultType="com.groupc.cnl.dto.PayVO">
+		SELECT * FROM (
+			SELECT * FROM (
+				SELECT ROWNUM AS rn, p.* FROM paysystem p 
+					WHERE id=#{param1} AND
+						TRUNC(update_date, 'DD') BETWEEN TRUNC(ADD_MONTHS(SYSDATE, -3), 'DD') AND TRUNC(SYSDATE, 'DD')
+							ORDER BY payseq DESC
+			) WHERE rn &gt;= #{param2}
+		) WHERE rn &lt;= #{param3}
+	</select>
+	
+	<select id="getPayListCount" parameterType="String" resultType="INTEGER">
+		SELECT COUNT(payseq) FROM paysystem WHERE id=#{param1}
+			AND TRUNC(update_date, 'DD') BETWEEN TRUNC(ADD_MONTHS(SYSDATE, -3), 'DD') AND TRUNC(SYSDATE, 'DD')
+	</select>
+	
+</mapper>

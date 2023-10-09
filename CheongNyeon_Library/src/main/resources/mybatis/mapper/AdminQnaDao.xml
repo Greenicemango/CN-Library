@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.groupc.cnl.adminDao.IAdminQnaDao">
+
+<resultMap  id="adminQnaMap" type="java.util.HashMap"></resultMap>
+	
+	<select id="getQnaCount" resultType="INTEGER">
+		SELECT COUNT(*) FROM qna WHERE subject like '%'||#{param1}||'%' or content like '%'||#{param1}||'%'
+	</select>
+
+	<select id="getQnaList" resultType="com.groupc.cnl.dto.QnaVO">
+		SELECT * FROM (
+			SELECT * FROM (
+				SELECT ROWNUM as rn, q.* FROM (
+					(SELECT * FROM qna WHERE subject like '%'||#{param1}||'%' or content like '%'||#{param1}||'%' order by qseq desc) q)
+			) WHERE rn &gt;= #{param2}
+		) WHERE rn &lt;= #{param3}
+	</select>
+	
+	<select id="getQnaDetail" parameterType="INTEGER" resultType="com.groupc.cnl.dto.QnaVO">
+		SELECT * FROM qna WHERE qseq=#{param1}
+	</select>
+	
+	<update id="updateQna">
+		UPDATE qna SET reply=#{param2}, rep='2' WHERE qseq=#{param1}
+	</update>
+	
+</mapper>

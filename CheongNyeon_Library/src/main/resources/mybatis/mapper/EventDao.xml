@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.groupc.cnl.dao.IEventDao">
+
+	<resultMap id="eventMap" type="java.util.HashMap"></resultMap>
+	
+	<select id="getEventBanner" resultType="com.groupc.cnl.dto.EventVO">
+		select * from event where rownum &lt;=6 order by eseq desc
+	</select>
+	
+	<select id="getEvent" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{ CALL getEvent(
+			#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=eventMap}
+		) }
+	</select>
+	
+	<select id="getEventDetail" statementType="CALLABLE" parameterType="java.util.HashMap">
+		{ CALL getEventDetail(
+			#{eseq},
+			#{ref_cursor, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=eventMap}
+		) }
+	</select>
+	
+	<select id="getEventList" resultType="com.groupc.cnl.dto.EventVO">
+		SELECT * FROM event ORDER BY eseq DESC
+	</select>
+	
+	<select id="getEventDetailByEseq" parameterType="INTEGER" resultType="com.groupc.cnl.dto.EventVO">
+		SELECT * FROM event WHERE eseq=#{param1}
+	</select>
+	
+</mapper>
