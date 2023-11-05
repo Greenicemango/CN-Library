@@ -14,6 +14,4 @@ CheongNyeon Library는 온라인 도서 검색 및 판매 기능을 제공하는
 
 개발 환경 : eclipse, PL/SQL, vsCode
 
-사용 툴 : Gradle,
-
 사용 API : 도로명주소 API
